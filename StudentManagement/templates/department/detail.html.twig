@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Department{% endblock %}
+
+
+
+{% block body %}
+<table class="table table-bordered table-hover mt-5  mb-5">
+    <h1 class="text text-success text-center">{{department.name}}</h1>
+    <tbody>
+        <tr>
+            <th class="text text-success">Hotline</th>
+            <td>{{department.hotline}}</td>
+        </tr>
+        <tr>
+            <th class="text text-success">Email</th>
+            <td>{{department.email}}</td>
+        </tr>
+        <tr>
+            <th class="text text-success">Room</th>
+            <td>{{department.room}}</td>
+        </tr>  
+        <tr>
+            <th class="text text-success">Manager:</th>
+            <td>
+            {% for d in department.manager %}
+            {{d.name}},
+            {% endfor %}
+            </td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

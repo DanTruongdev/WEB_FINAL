@@ -1,0 +1,9 @@
+{% form_theme departmentForm 'bootstrap_5_layout.html.twig'%}
+{% extends "base.html.twig" %}
+
+{% block body %}
+<div class="container col-md-6 mt-3 text-center">
+    <h2 class="text text-success mb-3">Add a new Department</h2>
+    {{form(departmentForm)}}
+</div> 
+{% endblock %}

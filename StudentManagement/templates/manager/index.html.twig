@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Manager{% endblock %}
+
+
+
+{% block body %}
+    <div class="container col-md-10 text-center">
+        <h2 class="text-primary">Manager List</h2>
+        <a href="{{path('manager_add')}}" class="btn btn-success">Add new a Manager</a>
+        <table class="table table-bordered table-hover mt-3">
+            <thead>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Image</th>
+                <th>Menu</th>
+            </thead>
+            <tbody>
+                {% for manager in managers %}
+                <tr>
+                    <td>{{manager.id}}</td>
+                    <td>{{manager.name}}</td>
+                    <td>  
+                        <a href="{{path('manager_detail', {'id': manager.id})}}">
+                            <img src="{{manager.image}}" width="90"  alt="manager image">
+                        </a>
+                    </td>
+                    <td>
+                        <a href="{{path('manager_edit', {'id': manager.id})}}" class="btn btn-warning">Edit</a>
+                        <a href="{{path('manager_delete', {'id': manager.id})}}" class="btn btn-danger"
+                        onclick=" return confirm('Do you want to delete this manager?');"
+                        >Delete</a>
+                    </td>
+                </tr>   
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+{% endblock %}

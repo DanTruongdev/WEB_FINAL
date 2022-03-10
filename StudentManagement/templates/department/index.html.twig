@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Manager{% endblock %}
+
+
+
+{% block body %}
+    <div class="container col-md-10  text-center">
+        {% for flash in app.flashes('Success') %}
+            <p class="alert alert-warning">{{flash}}</p>
+        {% endfor %}
+        {% for flash in app.flashes('Error') %}
+            <p class="alert alert-danger">{{flash}}</p>
+        {% endfor %}
+`   <h2 class="text-primary">Department List</h2>
+    <a href="{{path('department_add')}}" class="btn btn-success">Add new a department</a>
+    <table class="table table-bordered table-hover mt-3">
+        <thead class="table-primary">
+            <tr>
+                <th>Department name</th>
+                <th>Hotline</th>
+                <th>Email</th>
+                <th>Menu</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for department in departmentall %}
+            <tr>
+                
+                <td><a href="{{path('department_detail',{'id':department.id})}}">{{department.name}}</a></td>
+                <td>{{department.hotline}}</td>
+                <td>{{department.email}}</td>
+                <td>
+                    <a href="{{path('department_edit',{'id':department.id})}}" class="btn btn-warning">Edit</a>
+                    <a href="{{path('department_delete', {'id': department.id})}}" class="btn btn-danger"
+                    onclick="return confirm('Do you want to delete this classes?');"
+                    >Delete</a>
+                </td>
+            </tr>   
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+{% endblock %}
